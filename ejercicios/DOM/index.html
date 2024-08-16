@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM JS</title>
+    <style>
+        body {
+            background-color: #e0f7fa;
+            color: #00796b;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        .parrafo1 {
+            font-size: 20px;
+            color: #004d40;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #004d40;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #00796b;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        #mensaje {
+            font-size: 18px;
+            color: #00796b;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #mensaje.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Manipulación del DOM con JS</h1>
+        <p id="miParrafo" class="parrafo1">Este es el texto Original</p>
+    </header>
+    <section>
+        <input type="text" id="nombreInput" placeholder="Ingresa tu nombre" />
+        <button id="miBoton">Saludar</button>
+        <p id="mensaje"></p>
+    </section>
+
+    <script>
+        const boton = document.getElementById("miBoton");
+        const parrafo = document.getElementById("miParrafo");
+        const nombreInput = document.getElementById("nombreInput");
+        const mensaje = document.getElementById("mensaje");
+
+        boton.addEventListener("click", function() {
+            const nombre = nombreInput.value;
+            
+            if (nombre) {
+                parrafo.textContent = `¡Hola, ${nombre}!`;
+                mensaje.textContent = `¡Encantado de conocerte, ${nombre}!`;
+                mensaje.classList.add('visible');
+            } else {
+                mensaje.textContent = 'Por favor, ingresa tu nombre.';
+                mensaje.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>
